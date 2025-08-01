@@ -1,6 +1,8 @@
 FROM ruby:3.2-alpine
 
 RUN apk add --no-cache build-base postgresql-dev nodejs yarn
+RUN apk add --no-cache yaml-dev build-base
+
 
 WORKDIR /app
 
