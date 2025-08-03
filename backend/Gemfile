@@ -47,5 +47,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   #Devise (popular Rails auth gem)
   gem 'devise'
+  gem 'devise-jwt'
+
 
 end
