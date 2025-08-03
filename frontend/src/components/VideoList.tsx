@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 type Video = {
   id: number;
@@ -37,7 +38,9 @@ const VideoList: React.FC = () => {
       ) : (
         filteredVideos.map(video => (
           <div key={video.id} style={{ marginBottom: '20px' }}>
-            <h3>{video.title}</h3>
+            <h3>
+              <Link to={`/watch/${video.id}`}>{video.title}</Link>
+            </h3>
             <video width="480" controls src={video.url}></video>
           </div>
         ))
