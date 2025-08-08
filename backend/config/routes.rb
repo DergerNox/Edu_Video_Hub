@@ -1,9 +1,15 @@
-Rails.application.routes.draw do
-  devise_for :users
-  namespace :api do
-    resources :videos, only: [:index, :show, :create]
-  end
+namespace :api do
+  devise_for :users,
+             path: '',
+             path_names: {
+               sign_in: 'login',
+               sign_out: 'logout',
+               registration: 'signup'
+             },
+             controllers: {
+               sessions: 'api/sessions',
+               registrations: 'api/registrations'
+             }
 
-  get "up" => "rails/health#show", as: :rails_health_check
-  # root "posts#index"
+  resources :videos, only: [:index, :show, :create]
 end
