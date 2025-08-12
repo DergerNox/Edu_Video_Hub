@@ -15,16 +15,16 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '79f6cb2f930d5e6e2db483307c6eacc9c4ae550e21ad66f5872cb795326158cd122e4e2c19f031f1636d441a7a2e3ab3ea050e07d0423626237a6bbbbbc49381'
- config.jwt do |jwt|
-  jwt.secret = Rails.application.credentials.devise_jwt_secret_key!
+config.jwt do |jwt|
+  jwt.secret = ENV.fetch('DEVISE_JWT_SECRET_KEY')
   jwt.dispatch_requests = [
-    ['POST', %r{^/api/login$}],
-    ['POST', %r{^/api/signup$}]
+    ['POST', %r{^/login$}],
+    ['POST', %r{^/signup$}]
   ]
   jwt.revocation_requests = [
-    ['DELETE', %r{^/api/logout$}]
+    ['DELETE', %r{^/logout$}]
   ]
-  jwt.expiration_time = 30.minutes.to_i
+  jwt.expiration_time = 1.day.to_i
 end
 
   # ==> Controller configuration
