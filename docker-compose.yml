@@ -27,6 +27,7 @@ services:
       DATABASE_HOST: db
       DATABASE_USER: postgres
       DATABASE_PASSWORD: password
+      DEVISE_JWT_SECRET_KEY: supersecretkeychangeit
 
   frontend:
     build:
